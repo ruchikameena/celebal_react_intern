@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+}
+.form-container {
+    min-width: 400px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #8b8a8afd;
+    border-radius: 20px;
+    background-color: #e0e1e2;
+}
+
+h2{
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 4px;
+    border-radius: 8px;
+}
+.form-container input,
+.form-container select {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+.form-container input:hover,
+.form-container select:hover{
+    box-shadow: 5px 5px 5px black;
+}
+
+.passkey {
+    display: flex;
+    margin: 0 auto 8px;
+}
+
+.passkey input{
+    margin: 0;
+}
+
+.passkey button{
+    border-radius: 4px;
+    padding: 0 10px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: all ease 0.5s;
+}
+
+.submission {
+    background-color: #000000;
+    color: white;
+    width: 100%;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+.passkey button:hover,.submission:hover{
+    background-color: white;
+    color: black;
+}
+
+.mobileNumber{
+    display: flex;
+}
+
+.mobileNumber select{
+    width: 20%;
+}
+
+.mobileNumber input{
+    width: 80%;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+    display: block;
+}
+
+.userData{
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.userData h2{
+    background-color: #008000;
+    border-radius: 0;
+}
+
+.userData h4{
+    background-color: #ffffff;
+    color: #008000;
+    border-radius: 0;
+    margin-bottom: 8px;
+}
