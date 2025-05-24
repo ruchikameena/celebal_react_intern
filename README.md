@@ -9,5 +9,5 @@ This is a React app that includes:
 - Dynamic dropdowns (Country-City)
 - Styled with custom CSS
 
-🔗 [Live Demo](https://your-deployed-link.vercel.app)
+🔗 [Live Demo](https://celebal-react-intern.vercel.app/)
 
