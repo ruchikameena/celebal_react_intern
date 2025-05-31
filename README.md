@@ -25,4 +25,4 @@ This is a React application that allows users to manage their tasks efficiently 
 - Tasks are saved in **localStorage** for persistence  
 - Responsive and user-friendly UI with custom CSS  
 - 
-- 🔗 [Live Demo](https://celebal-react-intern.vercel.app/)
+- 🔗 [Live Demo](https://celebal-react-intern-tmdr.vercel.app/)
