@@ -11,3 +11,18 @@ This is a React app that includes:
 
 🔗 [Live Demo](https://celebal-react-intern.vercel.app/)
 
+## 📁 Week 2 - To-Do List App
+
+This is a React application that allows users to manage their tasks efficiently with features like adding, deleting, marking complete/incomplete, filtering, and sorting tasks.
+
+### Features
+
+- Add new tasks with input validation  
+- Mark tasks as **Complete** or **Incomplete**  
+- Delete tasks from the list  
+- Filter tasks by status: All, Completed, Incomplete  
+- Sort tasks alphabetically (A-Z or Z-A)  
+- Tasks are saved in **localStorage** for persistence  
+- Responsive and user-friendly UI with custom CSS  
+- 
+- 🔗 [Live Demo](https://celebal-react-intern.vercel.app/)
