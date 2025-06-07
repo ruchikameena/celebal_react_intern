@@ -1,0 +1,54 @@
+header {
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+}
+
+aside {
+  width: 200px;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+aside li {
+  margin: 10px 0;
+}
+
+aside a {
+  text-decoration: none;
+  color: #333;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.app.dark {
+  background-color: #121212;
+  color: white;
+}
+
+.app.dark header {
+  background: #222;
+}
+
+.app.dark aside {
+  background: #1e1e1e;
+}
+
+.app.dark aside a {
+  color: #ccc;
+}
