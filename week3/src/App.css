@@ -1,3 +1,27 @@
+/* Light mode (default) */
+.app.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Dark mode */
+.app.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+.app.dark header {
+  background-color: #1f1f1f;
+}
+
+.app.dark aside {
+  background-color: #2c2c2c;
+}
+
+.app.dark a {
+  color: #ccc;
+}
+
 header {
   background: #333;
   color: white;
@@ -7,48 +31,16 @@ header {
   align-items: center;
 }
 
-.main {
-  display: flex;
-}
-
-aside {
-  width: 200px;
-  background: #f4f4f4;
-  padding: 20px;
-}
-
-aside ul {
-  list-style: none;
-  padding: 0;
-}
-
-aside li {
-  margin: 10px 0;
-}
-
-aside a {
-  text-decoration: none;
-  color: #333;
-}
-
-.content {
-  flex: 1;
-  padding: 20px;
-}
-
-.app.dark {
-  background-color: #121212;
+.theme-toggle {
+  background-color: transparent;
+  border: 1px solid white;
   color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.app.dark header {
-  background: #222;
-}
-
-.app.dark aside {
-  background: #1e1e1e;
-}
-
-.app.dark aside a {
-  color: #ccc;
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
