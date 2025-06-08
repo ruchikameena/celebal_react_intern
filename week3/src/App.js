@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { KanbanBoard } from "./pages/KanbanBoard";
 import { Dashboard } from "./pages/Dashboard";
@@ -18,7 +18,7 @@ const getInitialTasks = () => {
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [theme, setTheme] = useState('light'); // 🆕 theme state
+  const [theme, setTheme] = useState('light'); 
 
   useEffect(() => {
     const loadedTasks = getInitialTasks();
@@ -41,7 +41,7 @@ function App() {
       <header>
         <h1>Admin Dashboard</h1>
         <button onClick={toggleTheme} className="theme-toggle">
-          {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+          {theme === 'light' ? 'Dark Mode' : ' Light Mode'}
         </button>
       </header>
       <div className="main">

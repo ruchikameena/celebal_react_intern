@@ -1,0 +1,41 @@
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-content {
+    background: #ffffff;
+    color: #555;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    font-family: sans-serif;
+}
+
+.dashboard-heading {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 2px;
+}
+
+.dashboard-note {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+}
+
+.dashboard-subtext {
+    text-align: center;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.list {
+    list-style: none;
+}
+
+.dashboard-list-items {
+    color: #555;
+    border-radius: 8px;
+}

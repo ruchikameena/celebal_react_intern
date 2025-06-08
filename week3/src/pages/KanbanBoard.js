@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import './KanbanBoard.css';
 import {
     DndContext,
     closestCenter,
@@ -24,18 +25,9 @@ function DroppableColumn({ id, children }) {
         <div
             ref={setNodeRef}
             id={id}
-            style={{
-                flex: 1,
-                background: isOver ? "#d0e6ff" : "#f4f4f4",
-                padding: 10,
-                borderRadius: 10,
-                minHeight: 300,
-                display: "flex",
-                flexDirection: "column",
-                transition: "background-color 0.2s ease",
-            }}
+            className={`kanban-column ${isOver ? 'kanban-column-over' : ''}`}
         >
-            <h3 style={{ textAlign: "center", textTransform: "capitalize" }}>{id}</h3>
+            <h3 className="kanban-column-title">{id}</h3>
             {children}
         </div>
     );
@@ -48,18 +40,18 @@ function KanbanTask({ task }) {
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
-        padding: "10px",
-        background: "white",
-        borderRadius: "5px",
-        marginBottom: "8px",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
-        cursor: "grab",
     };
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+        <div
+            ref={setNodeRef}
+            className="kanban-task"
+            style={style}
+            {...attributes}
+            {...listeners}
+        >
             <div>{task.name}</div>
-            <small style={{ color: "#666" }}>Due: {task.date}</small>
+            <small className="kanban-task-date">Due: {task.date}</small>
         </div>
     );
 }
@@ -137,21 +129,21 @@ export const KanbanBoard = () => {
     };
 
     return (
-        <div style={{ padding: 20, maxWidth: 1000, margin: "auto" }}>
+        <div className="kanban-container">
             <h2>Kanban Board</h2>
-            <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+            <div className="kanban-controls">
                 <input
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
                     placeholder="Enter task"
-                    style={{ flex: 1, padding: 10 }}
+                    className="kanban-input"
                 />
-                <button onClick={addTask} style={{ padding: 10 }}>
+                <button onClick={addTask} className="kanban-add-button">
                     Add Task
                 </button>
                 <button
                     onClick={resetBoard}
-                    style={{ padding: 10, backgroundColor: "#f44336", color: "white" }}
+                    className="kanban-reset-button"
                 >
                     Reset Board
                 </button>
@@ -163,7 +155,7 @@ export const KanbanBoard = () => {
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
             >
-                <div style={{ display: "flex", gap: 20 }}>
+                <div className="kanban-columns">
                     {COLUMN_TYPES.map((column) => (
                         <DroppableColumn key={column} id={column}>
                             <SortableContext
@@ -180,15 +172,7 @@ export const KanbanBoard = () => {
 
                 <DragOverlay>
                     {activeTask ? (
-                        <div
-                            style={{
-                                padding: 10,
-                                background: "white",
-                                border: "1px solid #ccc",
-                                borderRadius: 5,
-                                boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-                            }}
-                        >
+                        <div className="kanban-drag-overlay">
                             {activeTask.name}
                         </div>
                     ) : null}

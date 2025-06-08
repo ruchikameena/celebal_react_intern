@@ -1,0 +1,37 @@
+.charts-container {
+    background: #fff;
+    padding: 20px;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.charts-title {
+    text-align: center;
+    margin: 0;
+}
+
+.chart-selector {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.chart-selector label {
+    cursor: pointer;
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-wrapper canvas {
+    width: 500px !important;
+    height: 365px !important;
+}

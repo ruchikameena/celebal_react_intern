@@ -14,6 +14,7 @@ import {
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import "./Calendar.css";
 
 // Load and save tasks to localStorage
 const getInitialTasks = () => {
@@ -52,41 +53,31 @@ function DraggableTask({ task }) {
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
-        padding: "5px 10px",
-        marginBottom: 5,
-        backgroundColor: "white",
-        borderRadius: 4,
-        boxShadow: "0 1px 2px rgba(0,0,0,0.15)",
-        cursor: "grab",
-        userSelect: "none",
-        fontSize: "0.85rem",
-        maxWidth: "100%",
-        whiteSpace: "nowrap",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
     };
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners} title={task.name}>
-            {task.name} <small style={{ fontSize: "0.7rem", color: "#666" }}>{task.date ? `(${task.date})` : "(No date)"}</small>
+        <div
+            ref={setNodeRef}
+            className="draggable-task"
+            style={style}
+            {...attributes}
+            {...listeners}
+            title={task.name}
+        >
+            {task.name}{" "}
+            <small className="task-date">
+                {task.date ? `(${task.date})` : "(No date)"}
+            </small>
         </div>
     );
 }
 
 function DroppableDay({ dateStr, day, children, isOver }) {
     const { setNodeRef } = useDroppable({ id: "date-" + dateStr });
-    const style = {
-        minHeight: 80,
-        border: "1px solid #ddd",
-        borderRadius: 6,
-        padding: 5,
-        backgroundColor: isOver ? "#d0f0c0" : "#fff",
-        display: "flex",
-        flexDirection: "column",
-    };
+    const className = `droppable-day ${isOver ? "over" : ""}`;
     return (
-        <div ref={setNodeRef} id={"date-" + dateStr} style={style}>
-            <div style={{ fontWeight: "bold", marginBottom: 5, fontSize: 12, textAlign: "right" }}>{day}</div>
+        <div ref={setNodeRef} id={"date-" + dateStr} className={className}>
+            <div className="day-number">{day}</div>
             {children}
         </div>
     );
@@ -107,11 +98,6 @@ export const Calendar = () => {
 
     const sensors = useSensors(useSensor(PointerSensor));
 
-    const tasksThisMonth = tasks.filter((task) => {
-        if (!task.date) return false;
-        const [y, m] = task.date.split("-").map(Number);
-        return y === year && m === month + 1;
-    });
 
     const taskPool = tasks.filter((t) => !t.date);
 
@@ -135,12 +121,9 @@ export const Calendar = () => {
         setTasks((prevTasks) => {
             const updated = prevTasks.map((t) => {
                 if (t.id === active.id) {
-                    // If dropped back in the task pool
                     if (!over.id.startsWith("date-")) {
                         return { ...t, date: null };
                     }
-
-                    // Dropped on a calendar date
                     const dateStr = over.id.slice(5);
                     return { ...t, date: dateStr };
                 }
@@ -150,7 +133,6 @@ export const Calendar = () => {
             return updated;
         });
     };
-    
 
     const handleDragOver = ({ over }) => {
         if (over) setOverId(over.id);
@@ -185,15 +167,22 @@ export const Calendar = () => {
     };
 
     return (
-        <div style={{ padding: 20, fontFamily: "Arial, sans-serif", maxWidth: 900, margin: "auto" }}>
-            <h2>Calendar: {year} - {month + 1}</h2>
-            <div style={{ marginBottom: 10 }}>
-                <button onClick={prevMonth} style={{ marginRight: 10 }}>Prev Month</button>
-                <button onClick={nextMonth}>Next Month</button>
-            </div>
-            <div style={{ marginBottom: 20 }}>
-                <input type="text" placeholder="Enter new task name" value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} style={{ padding: 5, width: 250 }} />
-                <button onClick={addNewTask} style={{ marginLeft: 10, padding: "5px 10px" }}>Add Task</button>
+        <div className="calendar-container">
+            <div className="date-change">
+                <h2>Calendar: {year} - {month + 1}</h2>
+                <div className="calendar-controls">
+                    <button onClick={prevMonth}>Prev Month</button>
+                    <button onClick={nextMonth}>Next Month</button>
+                </div>
+                <div className="task-input">
+                    <input
+                        type="text"
+                        placeholder="Enter new task name"
+                        value={newTaskName}
+                        onChange={(e) => setNewTaskName(e.target.value)}
+                    />
+                    <button onClick={addNewTask}>Add Task</button>
+                </div>
             </div>
 
             <DndContext
@@ -203,19 +192,24 @@ export const Calendar = () => {
                 onDragEnd={handleDragEnd}
                 onDragOver={handleDragOver}
             >
-                <div style={{ border: "1px solid #ccc", padding: 10, marginBottom: 20, backgroundColor: "#fafafa", borderRadius: 5 }}>
+                <div className="task-pool">
                     <h3>Task Pool (Unscheduled Tasks)</h3>
-                    <SortableContext items={taskPool.map((t) => t.id)} strategy={verticalListSortingStrategy}>
-                        {taskPool.length === 0 && <p style={{ fontStyle: "italic" }}>No unscheduled tasks</p>}
+                    <SortableContext
+                        items={taskPool.map((t) => t.id)}
+                        strategy={verticalListSortingStrategy}
+                    >
+                        {taskPool.length === 0 && (
+                            <p className="no-tasks">No unscheduled tasks</p>
+                        )}
                         {taskPool.map((task) => (
                             <DraggableTask key={task.id} task={task} />
                         ))}
                     </SortableContext>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 5 }}>
+                <div className="calendar-grid">
                     {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                        <div key={day} style={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#eee", padding: "5px 0", borderRadius: 4 }}>{day}</div>
+                        <div key={day} className="calendar-day-header">{day}</div>
                     ))}
                     {calendarCells.map((day, index) => {
                         if (!day) return <div key={"empty-" + index} />;
@@ -223,8 +217,16 @@ export const Calendar = () => {
                         const tasksForDay = tasks.filter((t) => t.date === dateStr);
                         const isOver = overId === "date-" + dateStr;
                         return (
-                            <DroppableDay key={dateStr} day={day} dateStr={dateStr} isOver={isOver}>
-                                <SortableContext items={tasksForDay.map((t) => t.id)} strategy={verticalListSortingStrategy}>
+                            <DroppableDay
+                                key={dateStr}
+                                day={day}
+                                dateStr={dateStr}
+                                isOver={isOver}
+                            >
+                                <SortableContext
+                                    items={tasksForDay.map((t) => t.id)}
+                                    strategy={verticalListSortingStrategy}
+                                >
                                     {tasksForDay.map((task) => (
                                         <DraggableTask key={task.id} task={task} />
                                     ))}
@@ -236,7 +238,9 @@ export const Calendar = () => {
 
                 <DragOverlay>
                     {activeTask ? (
-                        <div style={{ padding: 10, background: "white", border: "1px solid #ccc", borderRadius: 5, cursor: "grabbing", userSelect: "none", maxWidth: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{activeTask.name}</div>
+                        <div className="drag-overlay">
+                            {activeTask.name}
+                        </div>
                     ) : null}
                 </DragOverlay>
             </DndContext>

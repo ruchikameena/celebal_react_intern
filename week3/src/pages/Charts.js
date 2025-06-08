@@ -10,6 +10,7 @@ import {
     Legend,
     ArcElement,
 } from 'chart.js';
+import './Charts.css';
 
 ChartJS.register(
     CategoryScale,
@@ -28,14 +29,7 @@ const COLORS = {
     completed: '#4ade80',
 };
 
-const getInitialTasks = () => {
-    try {
-        const stored = localStorage.getItem("kanban_data");
-        return stored ? JSON.parse(stored) : [];
-    } catch (e) {
-        return [];
-    }
-};
+
 
 export const Charts = () => {
     const [chartType, setChartType] = useState('bar');
@@ -52,7 +46,7 @@ export const Charts = () => {
     };
 
     useEffect(() => {
-        loadTasks(); // initial load
+        loadTasks();
 
         const interval = setInterval(() => {
             loadTasks();
@@ -94,22 +88,16 @@ export const Charts = () => {
     };
 
     return (
-        <div style={{
-            maxWidth: '700px',
-            margin: '2rem auto',
-            padding: '1rem',
-            background: '#fff',
-            borderRadius: 8,
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-        }}>
-            <h3 style={{ textAlign: 'center' }}>📊 Task Statistics</h3>
+        <div className="charts-container">
+            <h3 className="charts-title">Task Statistics</h3>
 
-            <div onChange={(e) => setChartType(e.target.value)} style={{ marginBottom: '1rem', textAlign: 'center' }}>
+            <div className="chart-selector" onChange={(e) => setChartType(e.target.value)}>
                 <label><input type="radio" name="chart" value="bar" defaultChecked /> Bar</label>{" "}
                 <label><input type="radio" name="chart" value="pie" /> Pie</label>
             </div>
-
-            {renderChart()}
+            <div className="chart-wrapper">
+                {renderChart()}
+            </div>
         </div>
     );
 };

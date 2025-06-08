@@ -1,15 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import './Tables.css';
 
 const COLUMN_TYPES = ["todo", "ongoing", "completed"];
 
-const getInitialTasks = () => {
-    try {
-        const stored = localStorage.getItem("kanban_data");
-        return stored ? JSON.parse(stored) : [];
-    } catch (e) {
-        return [];
-    }
-};
 
 export const Tables = () => {
     const [tasks, setTasks] = useState([]);
@@ -30,13 +23,13 @@ export const Tables = () => {
     };
 
     useEffect(() => {
-        loadTasks(); // initial load
+        loadTasks(); 
 
         const interval = setInterval(() => {
             loadTasks();
-        }, 1000); // check every 1 second
+        }, 1000); 
 
-        return () => clearInterval(interval); // cleanup
+        return () => clearInterval(interval); 
     }, []);
 
     const tasksByStatus = COLUMN_TYPES.reduce((acc, status) => {
@@ -45,19 +38,13 @@ export const Tables = () => {
     }, {});
 
     return (
-        <div style={{ padding: 20 }}>
+        <div className="tables-container">
             <h2>Tasks in Tables by Status</h2>
-
-            <div style={{ display: "flex", gap: 30 }}>
+            <div className="tables-grid">
                 {COLUMN_TYPES.map((status) => (
-                    <div key={status} style={{ flex: 1 }}>
+                    <div key={status} className="table-wrapper">
                         <h3>{status.toUpperCase()}</h3>
-                        <table
-                            border="1"
-                            cellPadding="8"
-                            cellSpacing="0"
-                            style={{ width: "100%", borderCollapse: "collapse" }}
-                        >
+                        <table className="tasks-table">
                             <thead>
                                 <tr>
                                     <th>Task Name</th>
@@ -67,7 +54,7 @@ export const Tables = () => {
                             <tbody>
                                 {tasksByStatus[status].length === 0 ? (
                                     <tr>
-                                        <td colSpan="2" style={{ textAlign: "center" }}>
+                                        <td colSpan="2" className="no-tasks">
                                             No tasks
                                         </td>
                                     </tr>
