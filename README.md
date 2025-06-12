@@ -31,11 +31,15 @@ This is a React application that allows users to manage their tasks efficiently 
 
 ### Features
 
-Develop a React Admin Dashboard app with customizable 
-- themes - given user dark/light theme for better user experience
-- tables - contain the task name and date of completion and set according to the status of task.
-- charts - visual representation of tasks based on their status
-- calendar - To set/update the date of completion of task, if want to assign date of next month just drag the task drop into the task pool, change the month as per your need and choose the date as per your choice.
-- Kanban board - To manage the status of the task 
+Develop a React Admin Dashboard app with customizable - themes, tables, charts, calendar and Kanban board 
+How to use the Dashboard is given in the react app itself, use the link to know more....!
 
+Week 3 - work :-
+
+- Develop the entire structure along with the CSS part
 🔗 [Live Demo](https://celebal-react-intern-gdvz.vercel.app/)
+
+Week 4 - work :-
+
+- Make changes in CSS to imrpove the UI of the 
+🔗 [Live Demo](https://celebal-react-intern-d5r5.vercel.app/)
