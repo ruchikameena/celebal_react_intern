@@ -36,9 +36,7 @@ How to use the Dashboard is given in the react app itself, use the link to know 
 
 Week 3 - work :-
 
-- Develop the entire structure along with the CSS part
-
-🔗 [Live Demo](https://celebal-react-intern-gdvz.vercel.app/)
+- Develop the entire App structure along with the basic CSS
 
 Week 4 - work :-
 
