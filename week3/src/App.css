@@ -57,24 +57,23 @@ header {
   background-color: #ffffff1a;
 }
 
-.main{
+.app_main{
   display: flex;
   height: 87vh;
   margin: 6px 0; 
 }
 
-.main aside{
+.app_main aside{
   width: 20%;
 }
 
-.main .content{
+.app_main .content{
   width: 80%;
-  overflow: scroll;
 }
 
-.main li{
+.app_main nav li{
   list-style: none;
   padding: 30px 10px;
   margin: 20px 10px;
-  background-color: #cccccc;
+  background-color: #f9f9f9;
 }

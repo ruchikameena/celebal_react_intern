@@ -44,7 +44,7 @@ function App() {
           {theme === 'light' ? 'Dark Mode' : ' Light Mode'}
         </button>
       </header>
-      <div className="main">
+      <div className="app_main">
         <aside>
           <nav>
             <ul>

@@ -32,7 +32,6 @@ const COLORS = {
 
 
 export const Charts = () => {
-    const [chartType, setChartType] = useState('bar');
     const [tasks, setTasks] = useState([]);
     const prevDataRef = useRef("");
 
@@ -76,27 +75,20 @@ export const Charts = () => {
         ],
     };
 
-    const renderChart = () => {
-        switch (chartType) {
-            case 'bar':
-                return <Bar data={statusData} />;
-            case 'pie':
-                return <Pie data={statusData} />;
-            default:
-                return null;
-        }
-    };
-
     return (
-        <div className="charts-container">
-            <h3 className="charts-title">Task Statistics</h3>
-
-            <div className="chart-selector" onChange={(e) => setChartType(e.target.value)}>
-                <label><input type="radio" name="chart" value="bar" defaultChecked /> Bar</label>{" "}
-                <label><input type="radio" name="chart" value="pie" /> Pie</label>
-            </div>
-            <div className="chart-wrapper">
-                {renderChart()}
+        <div className='chart_main'>
+            <div className="charts-container">
+                <h3 className="charts-title">Task Statistics</h3>
+                <div className='charts_box'>
+                    <div className='chart_left'>
+                        <Bar className='barChart' data={statusData} />
+                        <p style={{fontStyle:'italic'}}>Bar Chart</p>
+                    </div>
+                    <div className='chart_right'>
+                        <Pie className='pieChart' data={statusData} />
+                        <p style={{ fontStyle: 'italic' }}>Pie Chart</p>
+                    </div>
+                </div>
             </div>
         </div>
     );

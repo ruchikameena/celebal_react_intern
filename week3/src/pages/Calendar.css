@@ -5,6 +5,8 @@
 }
 .calendar-container{
     padding: 0 20px;
+    overflow: scroll;
+    height: 87vh;
 }
 .date-change{
     display: flex;
