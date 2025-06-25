@@ -27,7 +27,7 @@ This is a React application that allows users to manage their tasks efficiently 
 
 🔗 [Live Demo](https://celebal-react-intern-tmdr.vercel.app/)
 
-## 📁 Week 3 -  Admin Dashboard app
+## 📁 Week 3 & 4 -  Admin Dashboard app
 
 ### Features
 
