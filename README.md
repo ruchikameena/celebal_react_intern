@@ -43,3 +43,11 @@ Week 4 - work :-
 - Make changes in CSS to imrpove the UI of the Dashboard
  
 🔗 [Live Demo](https://celebal-react-intern-d5r5.vercel.app/)
+
+## 📁 Week 5 & 6 -  Spotify Clone
+
+### Features
+
+- This clone consist of artists list, song by genre and search functionality
+- responsive UI 
+- user can select song of their choice the music is fetch and added to the music player which has further various feature to control the songs and song list.
