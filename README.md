@@ -51,3 +51,11 @@ Week 4 - work :-
 - This clone consist of artists list, song by genre and search functionality
 - responsive UI 
 - user can select song of their choice the music is fetch and added to the music player which has further various feature to control the songs and song list.
+
+## 📁 Week 7 & 8 - Ecommerce Store Website
+
+### Features
+
+- Api is created
+- product data is fetched from the Mongodb database
+- backend is setup and product route is created
