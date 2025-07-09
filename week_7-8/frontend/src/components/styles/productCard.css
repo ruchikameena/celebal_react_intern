@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card.grid {
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.card.list {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 10px;
+  align-items: center;
+}
+
+.card.list img {
+  width: 150px;
+  margin-right: 20px;
+}
+
+.card.grid img {
+  width: 100%;
+}
+
+/* .card-details {
+  display: flex;
+  flex-direction: column;
+} */

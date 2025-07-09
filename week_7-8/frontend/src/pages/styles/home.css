@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.home_container{
+    /* width: 100%; */
+    /* background-color: yellowgreen; */
+    padding: 10px;
+}
+.product-wrapper.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-wrapper.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.toggle-buttons {
+  margin-bottom: 20px;
+}
