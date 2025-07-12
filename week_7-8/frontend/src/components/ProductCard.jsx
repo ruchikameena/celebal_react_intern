@@ -1,5 +1,7 @@
 import "../components/styles/productCard.css";
+import { useCart } from "../context/CartContext";
 const ProductCard = ({product,view}) => {
+    const { addToCart } = useCart();
     return(
         <div className={`card ${view}`}>
             <img src={product.image} alt={product.name} width="150" />
@@ -7,7 +9,9 @@ const ProductCard = ({product,view}) => {
                 <h3>{product.name}</h3>
                 <p>{product.category}</p>
                 <p>{product.price}</p>
-                <button onClick={() => alert("added to cart!")}>Add to Cart</button>
+                <button onClick={() => {
+                    console.log("product passed to addtocart:",product);
+                    addToCart(product)}}>Add to Cart</button>
             </div>
         </div>
     )

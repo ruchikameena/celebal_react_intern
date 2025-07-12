@@ -5,19 +5,29 @@ import "../pages/styles/home.css"
 const Home = () => {
     const [products,setProducts] = useState([]);
     const [view, setView] = useState("grid");
+    const [searchTerm, setSearchTerm] = useState("");
+
     useEffect(()=>{
         API.get("/products").then((res)=>setProducts(res.data)).catch((err)=>console.error(err));
     },[]);
+
+    const filterProduct = products.filter((product) => 
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) || product.category.toLowerCase().includes(searchTerm.toLowerCase()) );
+
     return(
         <div className="home_container">
+            <div className="top_controls">
+                <input type="text" placeholder="Search products..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            </div>
             <div className="toggle_button">
                 <button onClick={() => setView("grid")}>Grid View</button>
                 <button onClick={() => setView("list")}>List View</button>
             </div>
             <div className={`product-wrapper ${view}`}>
-                {products.map((product)=>{
-                    return <ProductCard key={product._id} product={product} view={view}/>
-                })}
+                {filterProduct.length>0?(filterProduct.map((product) => (<ProductCard key={product._id} product={product} view={view}/>))) :(
+                    <p>No product found.</p>
+                )
+                }
             </div>
         </div>
     )
