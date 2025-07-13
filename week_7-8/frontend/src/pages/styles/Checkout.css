@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.checkout_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 90vh;
+    align-items: center;
+}
+
+.checkout_main_data{
+    border: 1px solid #ccc;
+    padding: 20px;
+}

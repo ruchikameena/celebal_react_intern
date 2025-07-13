@@ -1,37 +1,48 @@
 import { useCart } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-
+import { useState } from "react";
+import "./styles/Checkout.css";
 const Checkout = () => {
   const { cartItems, total, clearCart } = useCart();
-  const navigate = useNavigate();
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   const handlePayment = () => {
-    // Simulate a payment process
     alert("Payment Successful! Thank you for your order.");
     clearCart();
-    navigate("/"); // Redirect to home
+    setOrderPlaced(true);
   };
 
-  useEffect(() => {
-    if (cartItems.length === 0) {
-      alert("Cart is empty. Add items before checkout.");
-      navigate("/cart");
-    }
-  }, [cartItems, navigate]);
+  if (orderPlaced) {
+    return (
+      <div className="checkout_main">
+        <h2>Your order has been placed!</h2>
+        <p>Thank you for shopping with us.</p>
+      </div>
+    );
+  }
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="checkout_main">
+        <h2>No product added here 🛒</h2>
+        <p>Please add items to your cart before checkout.</p>
+      </div>
+    );
+  }
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>Checkout Summary</h2>
-      <ul>
+    <div className="checkout_main">
+      <div className="checkout_main_data">
+        <h2 style={{marginBottom:'10px'}}>Checkout Summary</h2>
+      <ul style={{listStyle:'none'}}>
         {cartItems.map((item) => (
-          <li key={item._id}>
-            {item.name} x {item.quantity} = ₹{item.price * item.quantity}
+          <li key={item._id} >
+            {item.name} x {item.quantity} = Rs. {item.price * item.quantity}
           </li>
         ))}
       </ul>
-      <h3>Total: ₹{cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</h3>
-      <button onClick={handlePayment}>Pay Now</button>
+      <h3>Total: Rs. {total}</h3>
+      <button onClick={handlePayment} style={{width:'100%',padding:'4px',marginTop:'10px'}}>Pay Now</button>
+      </div>
     </div>
   );
 };

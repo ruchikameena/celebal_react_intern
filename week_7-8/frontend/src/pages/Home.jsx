@@ -17,11 +17,11 @@ const Home = () => {
     return(
         <div className="home_container">
             <div className="top_controls">
-                <input type="text" placeholder="Search products..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                <input type="text" placeholder="Search products..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="search_product"/>
+                <div className="toggle_button">
+                <button className="toggle_button_des" onClick={() => setView("grid")}>Grid View</button>
+                <button className="toggle_button_des" onClick={() => setView("list")}>List View</button>
             </div>
-            <div className="toggle_button">
-                <button onClick={() => setView("grid")}>Grid View</button>
-                <button onClick={() => setView("list")}>List View</button>
             </div>
             <div className={`product-wrapper ${view}`}>
                 {filterProduct.length>0?(filterProduct.map((product) => (<ProductCard key={product._id} product={product} view={view}/>))) :(

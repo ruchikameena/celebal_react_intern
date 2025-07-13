@@ -3,23 +3,54 @@ import { createContext, useContext, useState, useEffect } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // ✅ Load cart from localStorage initially
-  const [cartItems, setCartItems] = useState(() => {
-    const saved = localStorage.getItem("cartItems");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // ✅ Save cart to localStorage whenever it changes
+  // Load from localStorage
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+    const saved = localStorage.getItem("cartItems");
+    if (saved) {
+      setCartItems(JSON.parse(saved));
+    }
+    setLoading(false); // ✅ mark loading as complete
+  }, []);
+
+  // Save to localStorage on change
+  useEffect(() => {
+    if (!loading) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+  }, [cartItems, loading]);
+
+  const increaseQty = (id) => {
+  setCartItems(
+    cartItems.map((item) =>
+      item._id === id ? { ...item, quantity: item.quantity + 1 } : item
+    )
+  );
+};
+
+const decreaseQty = (id) => {
+  setCartItems(
+    cartItems
+      .map((item) =>
+        item._id === id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+      .filter((item) => item.quantity > 0) // remove item if quantity becomes 0
+  );
+};
+
 
   const addToCart = (product) => {
     const exists = cartItems.find((item) => item._id === product._id);
     if (exists) {
       setCartItems(
         cartItems.map((item) =>
-          item._id === product._id ? { ...item, quantity: item.quantity + 1 } : item
+          item._id === product._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         )
       );
     } else {
@@ -33,9 +64,14 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => setCartItems([]);
 
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart }}
+      value={{ cartItems, addToCart, removeFromCart, clearCart, total, loading, increaseQty,decreaseQty }}
     >
       {children}
     </CartContext.Provider>

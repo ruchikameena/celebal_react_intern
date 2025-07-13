@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cart_container{
+    padding: 10px;
+}
+
+.cart_lists{
+    background-color: rgb(234, 236, 238);
+    margin-bottom: 10px;
+    display: flex;
+    padding: 5px 10px;
+}
+
+.cart_item_details{
+    padding: 0 10px;
+    width: 100%;
+}
