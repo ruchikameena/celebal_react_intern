@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
     if (saved) {
       setCartItems(JSON.parse(saved));
     }
-    setLoading(false); // ✅ mark loading as complete
+    setLoading(false); // mark loading as complete
   }, []);
 
   // Save to localStorage on change
@@ -38,7 +38,7 @@ const decreaseQty = (id) => {
           ? { ...item, quantity: item.quantity - 1 }
           : item
       )
-      .filter((item) => item.quantity > 0) // remove item if quantity becomes 0
+      .filter((item) => item.quantity > 0) 
   );
 };
 
