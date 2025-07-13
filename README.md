@@ -59,5 +59,9 @@ Week 4 - work :-
 - Develop an E-commerce Store. 
 - product data is fetched from the Mongodb database.
 - backend is setup and product route is created.
-- Include customizable products view (List/Grid), product listings, search functionality, cart management, checkout process, and payment gateway integration.
+- Include customizable products view (List/Grid), product listings, search functionality, cart management, checkout process.
+- Currently, payment is simulated using an alert (Payment Successful! Thank you for your order.)
+- *Payment gateway integration (e.g., Razorpay/Stripe) will be added in future versions.*
 - Ensure seamless navigation and smooth user experience.
+
+🔗 [Live Demo](https://celebal-react-intern-1.onrender.com/)
