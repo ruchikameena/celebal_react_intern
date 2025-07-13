@@ -56,6 +56,8 @@ Week 4 - work :-
 
 ### Features
 
-- Api is created
-- product data is fetched from the Mongodb database
-- backend is setup and product route is created
+- Develop an E-commerce Store. 
+- product data is fetched from the Mongodb database.
+- backend is setup and product route is created.
+- Include customizable products view (List/Grid), product listings, search functionality, cart management, checkout process, and payment gateway integration.
+- Ensure seamless navigation and smooth user experience.
